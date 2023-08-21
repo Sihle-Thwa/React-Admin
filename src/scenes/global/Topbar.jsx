@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Box, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
-import { colourModeContext, tokens } from "../../theme";
+import { colorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
-import LightModeOutLinedIcon from "@mui/icons-material/LightModeOutLined";
-import DarkModeOutLinedIcon from "@mui/icons-material/DarkModeOutLined";
-import NotificationsOutLinedIcon from "@mui/icons-material/NotificationsOutLined";
-import SettingsOutLinedIcon from "@mui/icons-material/SettingsOutLined";
-import PersonOutLinedIcon from "@mui/icons-material/PersonOutLined";
+import LightModeOutLinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutLinedIcon from "@mui/icons-material/DarkModeOutlined";
+import NotificationsOutLinedIcon from "@mui/icons-material/NotificationsOutlined";
+import SettingsOutLinedIcon from "@mui/icons-material/SettingsOutlined";
+import PersonOutLinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 
 
 const Topbar = () => {
     const theme = useTheme();
-    const colours = tokens(theme.palette.mode);
-    const colourMode = useContext(colourModeContext);
+    const colors = tokens(theme.palette.mode);
+    const colorMode = useContext(colorModeContext);
 
 
     return (
@@ -22,7 +22,7 @@ const Topbar = () => {
             {/* Search Bar*/}
             <Box
                 display="flex"
-                backgroundColor={colours.primary[400]}
+                backgroundColor={colors.primary[400]}
                 borderRadius="3px">
 
                 <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
@@ -33,7 +33,7 @@ const Topbar = () => {
 
             {/* ICONS*/}
             <Box display="flex">
-                <IconButton onClick={colourMode.toggleColourMode}>
+                <IconButton onClick={colorMode.toggleColorMode}>
                     {theme.palette.mode === 'dark' ? (
                         <DarkModeOutLinedIcon />
                     ) : (

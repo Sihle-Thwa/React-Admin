@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useState } from "react";
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
-import { Box, IconButton, Typography, useTheme } from '@mui/material';
+import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
+import { Box, IconButton, Typography, useTheme } from '@mui/material';
 import { tokens } from "../../theme";
-import HomeOutLinedIcon from "@mui/icons-material/HomeOutLined";
-import PeopleOutLinedIcon from "@mui/icons-material/PeopleOutLined";
-import MenuOutLinedIcon from "@mui/icons-material/MenuOutLined";
-import ContactsOutLinedIcon from "@mui/icons-material/ContactsOutLined";
-import ReceiptOutLinedIcon from "@mui/icons-material/ReceiptOutLined";
-import PersonOutLinedIcon from "@mui/icons-material/PersonOutLined";
-import CalendarTodayOutLinedIcon from "@mui/icons-material/CalendarTodayOutLined";
-import HelpOutLinedIcon from "@mui/icons-material/HelpOutLined";
-import BarChartOutLinedIcon from "@mui/icons-material/BarChartOutLined";
-import PieChartOutLinedIcon from "@mui/icons-material/PieChartOutLined";
-import TimelineOutLinedIcon from "@mui/icons-material/TimelineOutLined";
-import MapOutLinedIcon from "@mui/icons-material/MapOutLined";
+import HomeOutLinedIcon from "@mui/icons-material/HomeOutlined";
+import PeopleOutLinedIcon from "@mui/icons-material/PeopleOutlined";
+import MenuOutLinedIcon from "@mui/icons-material/MenuOutlined";
+import ContactsOutLinedIcon from "@mui/icons-material/ContactsOutlined";
+import ReceiptOutLinedIcon from "@mui/icons-material/ReceiptOutlined";
+import PersonOutLinedIcon from "@mui/icons-material/PersonOutlined";
+import CalendarTodayOutLinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import HelpOutLinedIcon from "@mui/icons-material/HelpOutlined";
+import BarChartOutLinedIcon from "@mui/icons-material/BarChartOutlined";
+import PieChartOutLinedIcon from "@mui/icons-material/PieChartOutlined";
+import TimelineOutLinedIcon from "@mui/icons-material/TimelineOutlined";
+import MapOutLinedIcon from "@mui/icons-material/MapOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
     const theme = useTheme();
@@ -31,51 +30,53 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             <Typography>{title}</Typography>
             <Link to={to} />
         </MenuItem>
-    )
-}
+    );
+};
 
 const ProSidebar = () => {
     const theme = useTheme();
-    const colours = tokens(theme.palette.mode);
+    const colors = tokens(theme.palette.mode);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [selected, setSelected] = useState("Dashboard");
 
     return (
-        <Box sx={{
-            "& .pro-sidebar-inner": {
-                background: '&{colours.primary[400]} !important'
-            },
-            "& .pro-icon-wrapper": {
-                background: "transparent !important"
-            },
-            "& .pro-inner-item": {
-                padding: "5px 35px 5px 20px !important"
-            },
-            "& .pro-inner-item::hover": {
-                color: "#868dfb !important"
-            },
-            "& .pro-menu-item.active": {
-                color: "#6870fa !important"
-            }
-
-        }}>
-            <ProSidebar>
+        <Box
+            sx={{
+                "& .pro-sidebar-inner": {
+                    background: '&{colours.primary[400]} !important'
+                },
+                "& .pro-icon-wrapper": {
+                    background: "transparent !important"
+                },
+                "& .pro-inner-item": {
+                    padding: "5px 35px 5px 20px !important"
+                },
+                "& .pro-inner-item::hover": {
+                    color: "#868dfb !important"
+                },
+                "& .pro-menu-item.active": {
+                    color: "#6870fa !important"
+                },
+            }}>
+            <Sidebar collapsed={isCollapsed}> {/* Shows the hamburger menu when collapsed*/}
                 <Menu iconShape="square">
                     {/* Logo and Menu Icon */}
-                    <MenuItem onClick={() => setIsCollapsed(!isCollapsed)}
+                    <MenuItem
+                        onClick={() => setIsCollapsed(!isCollapsed)}
                         icon={isCollapsed ? <MenuOutLinedIcon /> : undefined}
                         style={{
                             margin: "10px 0 20px 0",
-                            color: colours.grey[100],
+                            color: colors.grey[100],
                         }}
-                    >
+                    > {/* Shows the profile picture and user details when is not collapsed*/}
                         {!isCollapsed && (
                             <Box
                                 display="flex"
                                 justifyContent="space-between"
                                 alignItems="center"
-                                ml="15px">
-                                <Typography variant="h3" color={colours.grey[100]}>
+                                ml="15px"
+                            >
+                                <Typography variant="h3" color={colors.grey[100]}>
                                     ADMIN
                                 </Typography>
                                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -100,13 +101,13 @@ const ProSidebar = () => {
                             <Box textAlign="center">
                                 <Typography
                                     variant="h2"
-                                    color={colours.grey[100]}
+                                    color={colors.grey[100]}
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
                                     Ed Roh
                                 </Typography>
-                                <Typography variant="h5" color={colours.greenAccent[500]}>
+                                <Typography variant="h5" color={colors.greenAccent[500]}>
                                     VP ADMIN
                                 </Typography>
                             </Box>
@@ -121,6 +122,13 @@ const ProSidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+                        <Typography
+                            variant="h6"
+                            color={colors.grey[300]}
+                            sx={{ m: "15px 0 5px 20px" }}
+                        >
+                            Data
+                        </Typography>
                         <Item
                             title="Manage Team"
                             to="/team"
@@ -128,6 +136,7 @@ const ProSidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+
                         <Item
                             title="Contact Information"
                             to="/contacts"
@@ -142,6 +151,13 @@ const ProSidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+                        <Typography
+                            variant="h6"
+                            color={colors.grey[300]}
+                            sx={{ m: "15px 0 5px 20px" }}
+                        >
+                            Pages
+                        </Typography>
                         <Item
                             title="Profile Form"
                             to="/form"
@@ -163,6 +179,13 @@ const ProSidebar = () => {
                             selected={selected}
                             setSelected={setSelected}
                         />
+                        <Typography
+                            variant="h6"
+                            color={colors.grey[300]}
+                            sx={{ m: "15px 0 5px 20px" }}
+                        >
+                            Charts
+                        </Typography>
                         <Item
                             title="Bar Chart"
                             to="/bar"
@@ -185,7 +208,7 @@ const ProSidebar = () => {
                             setSelected={setSelected}
                         />
                         <Item
-                            title="Geography"
+                            title="Geography Chart"
                             to="/geography"
                             icon={<MapOutLinedIcon />}
                             selected={selected}
@@ -193,9 +216,9 @@ const ProSidebar = () => {
                         />
                     </Box>
                 </Menu>
-            </ProSidebar>
+            </Sidebar>
         </Box>
     );
 };
 
-export default Sidebar;
+export default ProSidebar;

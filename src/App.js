@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { colourModeContext, useMode } from "./theme";
+import React from 'react';
+import { colorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { Routes, Route } from "react-router-dom";
+import Sidebar from "./scenes/global/Sidebar";
 import Topbar from "./scenes/global/Topbar";
 import dashboard from "./scenes/dashboard";
-import Sidebar from "./scenes/global/Sidebar";
+import { Routes, Route } from "react-router-dom";
 /*import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
@@ -18,19 +18,19 @@ import Calender from "./scenes/calender";*/
 
 function App() {
 
-  const [theme, colourMode] = useMode();
+  const [theme, colorMode] = useMode();
 
   return (
-    <colourModeContext.Provider value={colourMode}>
+    <colorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
           <Sidebar />
           <main className="content">
             <Topbar />
-            {/*  <Routes>
+            <Routes>
               <Route path="/" element={<dashboard />} />
-              <Route path="/team" element={<Team />} />
+              {/*} <Route path="/team" element={<Team />} />
               <Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
@@ -39,13 +39,13 @@ function App() {
               <Route path="/line" element={<Line />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/geography" element={<Geography />} />
-              <Route path="/calender" element={<Calender />} />
+              <Route path="/calender" element={<Calender />} />*/}
             </Routes>
-            */}
+
           </main>
         </div>
       </ThemeProvider>
-    </colourModeContext.Provider>
+    </colorModeContext.Provider>
   );
 }
 
