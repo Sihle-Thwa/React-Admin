@@ -43,19 +43,19 @@ const ProSidebar = () => {
         <Box
             sx={{
                 "& .pro-sidebar-inner": {
-                    background: '&{colours.primary[400]} !important'
+                    background: '&{colors.primary[400]} !important',
                 },
                 "& .pro-icon-wrapper": {
-                    background: "transparent !important"
+                    background: "transparent !important",
                 },
                 "& .pro-inner-item": {
-                    padding: "5px 35px 5px 20px !important"
+                    padding: "5px 35px 5px 20px !important",
                 },
                 "& .pro-inner-item::hover": {
-                    color: "#868dfb !important"
+                    color: "#868dfb !important",
                 },
                 "& .pro-menu-item.active": {
-                    color: "#6870fa !important"
+                    color: "#6870fa !important",
                 },
             }}>
             <Sidebar collapsed={isCollapsed}> {/* Shows the hamburger menu when collapsed*/}

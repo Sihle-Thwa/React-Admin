@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
 import { colorModeContext, useMode } from "./theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Sidebar from "./scenes/global/Sidebar";
 import Topbar from "./scenes/global/Topbar";
-import dashboard from "./scenes/dashboard";
-import { Routes, Route } from "react-router-dom";
-/*import Team from "./scenes/team";
-import Invoices from "./scenes/invoices";
+import Dashboard from "./scenes/dashboard";
+import Team from "./scenes/team";
+/*import Invoices from "./scenes/invoices";
 import Contacts from "./scenes/contacts";
 import Bar from "./scenes/bar";
 import Form from "./scenes/form";
@@ -19,19 +19,20 @@ import Calender from "./scenes/calender";*/
 function App() {
 
   const [theme, colorMode] = useMode();
+  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
     <colorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          <Sidebar />
+          <Sidebar isSidebar={isSidebar} />
           <main className="content">
-            <Topbar />
+            <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-              <Route path="/" element={<dashboard />} />
-              {/*} <Route path="/team" element={<Team />} />
-              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/team" element={<Team />} />
+              {/*<Route path="/contacts" element={<Contacts />} />
               <Route path="/invoices" element={<Invoices />} />
               <Route path="/form" element={<Form />} />
               <Route path="/bar" element={<Bar />} />
@@ -41,7 +42,6 @@ function App() {
               <Route path="/geography" element={<Geography />} />
               <Route path="/calender" element={<Calender />} />*/}
             </Routes>
-
           </main>
         </div>
       </ThemeProvider>
