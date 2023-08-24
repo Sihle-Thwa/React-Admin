@@ -105,7 +105,7 @@ const ProSidebar = () => {
                                     fontWeight="bold"
                                     sx={{ m: "10px 0 0 0" }}
                                 >
-                                    Ed Roh
+                                    Siphesihle Mthethwa
                                 </Typography>
                                 <Typography variant="h5" color={colors.greenAccent[500]}>
                                     VP ADMIN
@@ -131,7 +131,7 @@ const ProSidebar = () => {
                         </Typography>
                         <Item
                             title="Manage Team"
-                            to="/team"
+                            to="..scenes/team"
                             icon={<PeopleOutLinedIcon />}
                             selected={selected}
                             setSelected={setSelected}
